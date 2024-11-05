@@ -6,9 +6,7 @@ import type { HeaderProps } from './Header';
 import { Header } from './Header';
 
 const meta = {
-  title: 'Example/Header',
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+  title: 'Components/Global Nav & Header',
   render: (args: HeaderProps) => Header(args),
   args: {
     onLogin: fn(),
@@ -20,12 +18,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<HeaderProps>;
 
-export const LoggedIn: Story = {
-  args: {
-    user: {
-      name: 'Jane Doe',
-    },
-  },
-};
+// export const LoggedIn: Story = {
+//   args: {
+//     user: {
+//       name: 'Jane Doe',
+//     },
+//   },
+// };
 
-export const LoggedOut: Story = {};
+// export const LoggedOut: Story = {};

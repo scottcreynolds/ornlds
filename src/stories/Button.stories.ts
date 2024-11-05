@@ -7,14 +7,21 @@ import { Button } from './Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Example/Button',
+  title: 'Atoms/Button',
   tags: ['autodocs'],
   render: (args) => Button(args),
   argTypes: {
-    backgroundColor: { control: 'color' },
+    family: {
+      control: { type: 'select' },
+      options: ['brand', 'neutral', 'urgent'],
+    },
+    mode: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'tertiary'],
+    },
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      options: ['small', 'large', 'icon'],
     },
   },
   args: { onClick: fn() },
@@ -26,7 +33,6 @@ type Story = StoryObj<ButtonProps>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    primary: true,
     label: 'Button',
   },
 };
@@ -34,6 +40,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     label: 'Button',
+    mode: 'secondary',
   },
 };
 

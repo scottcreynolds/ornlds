@@ -1,16 +1,44 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* ORNL brand colors - temporary until Style Dictionary set up */
+  --white: #ffffff;
+
+  --gray-200: #D2D2D2;
+  --gray-500: #757575;
+
+  --green-500: #0F873D;
+  --green-600: #04682A;
+  --green-700: #005520;
+
+  /* background/foreground derivatives */
+  --primary-bg: var(--green-500);
+  --primary-fg: var(--white);
+  --primary-bg-hover: var(--green-600);
+  --primary-fg-hover: var(--white);
+  --primary-bg-active: var(--green-700);
+  --primary-fg-active: var(--white);
+  --primary-bg-disabled: var(--gray-200);
+  --primary-fg-disabled: var(--gray-500);
+
+  /* font variables */
+  --font-family: "Mulish", system-ui, Helvetica, Arial, sans-serif;
+
+
+  font-family: var(--font-family);
   line-height: 1.5;
   font-weight: 400;
 
+
+
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--white);
   background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
 }
 
 a {
