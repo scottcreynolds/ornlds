@@ -1,7 +1,12 @@
 import { html } from 'lit';
 
 import { Button } from './Button';
+
+import Logo from './assets/ornl-logo.png';
+import LogoLight from './assets/ornl-logo-light.svg';
+import Hexagons from './assets/hexagons.png';
 import './header.css';
+import { Icon } from './Icon';
 
 type User = {
   name: string;
@@ -9,48 +14,119 @@ type User = {
 
 export interface HeaderProps {
   user?: User;
+  header?: boolean;
+  navLocation?: 'top' | 'side';
+
   onLogin?: () => void;
   onLogout?: () => void;
   onCreateAccount?: () => void;
 }
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => html`
-  <header>
-    <div class="storybook-header">
-      <div>
-        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" fillRule="evenodd">
-            <path
-              d="M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z"
-              fill="#FFF"
-            />
-            <path
-              d="M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z"
-              fill="#555AB9"
-            />
-            <path
-              d="M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z"
-              fill="#91BAF8"
-            />
-          </g>
-        </svg>
-        <h1>Acme</h1>
+export const Header = ({ header, user, navLocation }: HeaderProps) => html`
+  ${header ?
+    html`
+      <header>
+        <div class="ornl-header-overlay" style="background-image: url(${Hexagons})"></div>
+        <div class="ornl-header">
+          <img src=${Logo} alt="Oak Ridge National Laboratory Logo" />
+          <input type="text" placeholder="Search..." />
+          </div>
+        </div>
+      </header>
+    `
+    : ''}
+  ${header && navLocation === 'top' ? html`
+        <div class="ornl-header--horizontal">
+        <div class="ornl-header--left">
+      <div class="ornl-linklist">
+        <a class="ornl-linklist--item" href="#">Nav Item</a>
+        <a class="ornl-linklist--item" href="#">Nav Item</a>
+        <a class="ornl-linklist--item" href="#">Nav Item</a>
+        <a class="ornl-linklist--item" href="#">Nav Item</a>
       </div>
-      <div>
-        ${user
-          ? Button({ size: 'small', onClick: onLogout, label: 'Log out' })
-          : html`${Button({
-              size: 'small',
-              onClick: onLogin,
-              label: 'Log in',
-            })}
-            ${Button({
-              primary: true,
-              size: 'small',
-              onClick: onCreateAccount,
-              label: 'Sign up',
-            })}`}
       </div>
-    </div>
-  </header>
+      <div class="ornl-header--right">
+            ${user
+      ? Button({ size: 'large', label: 'Log out' })
+      : html`${Button({
+        size: 'large',
+        label: 'Button label',
+      })}
+                    `}
+      </div>
+    </div>`
+
+    : ''}
+        ${!header && navLocation === 'top' ? html`
+           <div class="ornl-header--horizontal no-header">
+           <div class="ornl-header--left">
+           <img src="${LogoLight}" alt="Oak Ridge National Laboratory Logo" />
+      <div class="ornl-linklist">
+        <a class="ornl-linklist--item" href="#">${Icon({ icon: 'house', size: 'large' })}</a>
+        <a class="ornl-linklist--item" href="#">Nav Item</a>
+        <a class="ornl-linklist--item" href="#">Nav Item</a>
+        <a class="ornl-linklist--item" href="#">Nav Item</a>
+        <a class="ornl-linklist--item" href="#">Nav Item</a>
+      </div>
+      </div>
+      <div class="ornl-header--right">
+          <input type="text" placeholder="Search..." />
+            ${user
+      ? Button({ size: 'small', label: 'Log out' })
+      : html`${Button({
+        size: 'small',
+        label: 'Button label',
+      })}${Button({
+        size: 'small',
+        label: 'Log in',
+        mode: 'tertiary',
+        })}
+                    `}
+      </div>
+    </div>`
+    : ''}
 `;
+
+
+
+
+// export const Header = ({ user, header, navLocation, onLogin, onLogout, onCreateAccount }: HeaderProps) => html`
+//   <header>
+//     <div class="storybook-header">
+//       <div>
+//         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+//           <g fill="none" fillRule="evenodd">
+//             <path
+//               d="M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z"
+//               fill="#FFF"
+//             />
+//             <path
+//               d="M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z"
+//               fill="#555AB9"
+//             />
+//             <path
+//               d="M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z"
+//               fill="#91BAF8"
+//             />
+//           </g>
+//         </svg>
+//         <h1>Acme</h1>
+//       </div>
+//       <div>
+//         ${user
+//           ? Button({ size: 'small', onClick: onLogout, label: 'Log out' })
+//           : html`${Button({
+//               size: 'small',
+//               onClick: onLogin,
+//               label: 'Log in',
+//             })}
+//             ${Button({
+//               primary: true,
+//               size: 'small',
+//               onClick: onCreateAccount,
+//               label: 'Sign up',
+//             })}`}
+//       </div>
+//     </div>
+//   </header>
+// `;

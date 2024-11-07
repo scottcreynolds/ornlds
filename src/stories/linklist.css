@@ -1,0 +1,14 @@
+
+/* TODO: Clean/variablize */
+.ornl-linklist--item {
+color: var(--surfaces-on-surface, #1E1E1E);
+text-align: center;
+/* Body/14 Bold */
+font-family: Mulish;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 21px */
+padding: 0px var(--spacing-small, 8px);
+white-space: nowrap;
+}

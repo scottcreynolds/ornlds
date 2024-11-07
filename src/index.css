@@ -27,8 +27,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-
-
   color-scheme: light dark;
   color: var(--white);
   background-color: #242424;
@@ -37,8 +35,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-
 }
 
 a {
@@ -58,9 +54,3 @@ body {
   min-height: 100vh;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-}
